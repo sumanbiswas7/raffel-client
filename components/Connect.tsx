@@ -13,30 +13,37 @@ export function ConnectButton() {
     Moralis,
     isWeb3Enabled,
   } = useMoralis();
-  const [btnText, setBtnTxt] = useState<ButtonType>("Connect Wallet");
+  const [btnText, setBtnTxt] = useState<ButtonType>();
 
   useEffect(() => {
-    if (window.localStorage.getItem("connected") != null)
+    if (window.localStorage.getItem("connected") != null) {
+      console.log(window.localStorage.getItem("connected"));
       setBtnTxt("Connected");
+    } else {
+      console.log(window.localStorage.getItem("connected"));
+      setBtnTxt("Connect Wallet");
+    }
     Moralis.onAccountChanged(() => {
       disable();
       setBtnTxt("Connect Wallet");
     });
   }, [isWeb3Enabled]);
 
+  useEffect(() => {
+    if (isWeb3Enabled) {
+      setBtnTxt("Connected");
+    } else {
+      setBtnTxt("Connect Wallet");
+    }
+  }, [isWeb3Enabled, web3EnableError]);
+
   async function enable() {
     await enableWeb3();
-    if (!web3EnableError?.message) {
-      setBtnTxt("Connected");
-      window.localStorage.setItem("connected", "injected");
-    }
+    window.localStorage.setItem("connected", "injected");
   }
   async function disable() {
     await deactivateWeb3();
-    if (!web3EnableError?.message) {
-      window.localStorage.removeItem("connected");
-      setBtnTxt("Connect Wallet");
-    }
+    window.localStorage.removeItem("connected");
   }
 
   return (
