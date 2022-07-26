@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { ConnectButton } from "../components/Connect";
 import { EnterButton } from "../components/EnterButton";
 import { Grid } from "../components/Grid";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = (props: any) => {
-  function handleUpdate() {
-    console.log("UPDATEEEE ITT");
-  }
+const Home: NextPage = () => {
+  function handleUpdate() {}
 
   return (
     <div className={styles.container}>
