@@ -1,0 +1,137 @@
+[
+  {
+    "type": "constructor",
+    "payable": false,
+    "inputs": [
+      { "type": "uint64", "name": "subcriptionId" },
+      { "type": "address", "name": "vrfCoordinator" },
+      { "type": "bytes32", "name": "gasLane" },
+      { "type": "uint32", "name": "callbackGasLimit" },
+      { "type": "uint32", "name": "interval" },
+      { "type": "uint256", "name": "entranceFee" }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "OnlyCoordinatorCanFulfill",
+    "inputs": [
+      { "type": "address", "name": "have" },
+      { "type": "address", "name": "want" }
+    ]
+  },
+  { "type": "error", "name": "OnlySimulatedBackend", "inputs": [] },
+  {
+    "type": "error",
+    "name": "Raffle__EntranceFee",
+    "inputs": [{ "type": "uint256", "name": "fee" }]
+  },
+  { "type": "error", "name": "Raffle__TransactionError", "inputs": [] },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "RaffleEnter",
+    "inputs": [{ "type": "address", "name": "player", "indexed": false }]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "RequestedRandomWinner",
+    "inputs": [{ "type": "uint256", "name": "reqId", "indexed": false }]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
+    "name": "winnerPicked",
+    "inputs": [{ "type": "address", "name": "winner", "indexed": false }]
+  },
+  {
+    "type": "function",
+    "name": "checkUpkeep",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [{ "type": "bytes" }],
+    "outputs": [{ "type": "bool", "name": "upkeepNeeded" }, { "type": "bytes" }]
+  },
+  {
+    "type": "function",
+    "name": "enterRaffle",
+    "constant": false,
+    "stateMutability": "payable",
+    "payable": true,
+    "gas": 29000000,
+    "inputs": [],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "getEntranceFee",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "getPlayers",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [{ "type": "uint256", "name": "idx" }],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "getRecentWinner",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "getTotalPlayers",
+    "constant": true,
+    "stateMutability": "view",
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "performUpkeep",
+    "constant": false,
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [{ "type": "bytes" }],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "rawFulfillRandomWords",
+    "constant": false,
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [
+      { "type": "uint256", "name": "requestId" },
+      { "type": "uint256[]", "name": "randomWords" }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "requestRandomWords",
+    "constant": false,
+    "payable": false,
+    "gas": 29000000,
+    "inputs": [],
+    "outputs": []
+  }
+]

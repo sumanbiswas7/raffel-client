@@ -17,10 +17,8 @@ export function ConnectButton() {
 
   useEffect(() => {
     if (window.localStorage.getItem("connected") != null) {
-      console.log(window.localStorage.getItem("connected"));
       setBtnTxt("Connected");
     } else {
-      console.log(window.localStorage.getItem("connected"));
       setBtnTxt("Connect Wallet");
     }
     Moralis.onAccountChanged(() => {

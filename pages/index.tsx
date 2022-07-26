@@ -2,9 +2,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { ConnectButton } from "../components/Connect";
+import { EnterButton } from "../components/EnterButton";
+import { Grid } from "../components/Grid";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+const Home: NextPage = (props: any) => {
+  function handleUpdate() {
+    console.log("UPDATEEEE ITT");
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,15 +22,12 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>Ethereum Raffle</h1>
         <a className={styles.sub_title}>
-          a decentralized lottery app, currently avalible only on rinkeby
-          network
+          a decentralized lottery app, currently avalible only on hardhat local
+          network ( ͡❛ ᴥ ͡❛)
         </a>
-        <div className={styles.grid}>
-          <p>Players joined - 3</p>
-          <p>Entrance Fee - 0.1 ETH</p>
-          <p>Recent Winner</p>
-        </div>
+        <Grid updateui={handleUpdate} />
         <ConnectButton />
+        <EnterButton update={handleUpdate} />
       </main>
 
       <footer className={styles.footer}></footer>
